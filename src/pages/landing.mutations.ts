@@ -28,7 +28,7 @@ export const usePostMutations = () => {
 
   const createMutation = useMutation(createPost, {
     onSuccess: (newPost) => {
-      queryClient.setQueryData<any>("posts", (oldData) => ({
+      queryClient.setQueryData<any>("posts", (oldData: any) => ({
         ...oldData,
         pages: [[newPost, ...oldData.pages[0]], ...oldData.pages.slice(1)],
       }));
@@ -37,7 +37,7 @@ export const usePostMutations = () => {
 
   const updateMutation = useMutation(updatePost, {
     onSuccess: (updatedPost) => {
-      queryClient.setQueryData<any>("posts", (oldData) => ({
+      queryClient.setQueryData<any>("posts", (oldData: any) => ({
         ...oldData,
         pages: oldData.pages.map((page: any) =>
           page.map((post: any) =>
